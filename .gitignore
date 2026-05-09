@@ -1,0 +1,10 @@
+.ace-tool/
+.playwright-mcp/
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.env*
+!.env.example
+npm-debug.log*
