@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { BackgroundScene } from "@/src/components/background-scene";
 
 export const metadata: Metadata = {
   title: "Emodiary | 绪语",
@@ -16,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body>{children}</body>
+      <body>
+        <BackgroundScene />
+        <div className="content-layer">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
