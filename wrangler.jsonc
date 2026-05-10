@@ -15,7 +15,6 @@
     "enabled": true
   },
   "vars": {
-    "DASHSCOPE_API_KEY": "sk-41fdd415d06f435892030cd62d519603",
     "DASHSCOPE_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1"
   }
 }
