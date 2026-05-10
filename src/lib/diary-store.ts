@@ -2,7 +2,7 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 import { createMockDiaryAnalysis } from "./analysis";
-import type { DiaryEntry } from "@/src/types/diary";
+import type { DiaryAnalysisResult, DiaryEntry } from "@/src/types/diary";
 
 export const DIARY_STORAGE_KEY = "emodiary.entries.v1";
 const DIARY_STORAGE_EVENT = "emodiary:entries";
@@ -17,14 +17,14 @@ export function useDiaryEntries() {
   return useMemo(() => parseEntriesSnapshot(snapshot), [snapshot]);
 }
 
-export function createDiaryEntry(rawText: string): DiaryEntry {
+export function createDiaryEntry(rawText: string, analysisResult?: DiaryAnalysisResult): DiaryEntry {
   const trimmedText = rawText.trim();
 
   return {
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
     rawText: trimmedText,
-    result: createMockDiaryAnalysis(trimmedText),
+    result: analysisResult ?? createMockDiaryAnalysis(trimmedText),
   };
 }
 

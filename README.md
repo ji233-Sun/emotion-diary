@@ -1,5 +1,21 @@
 Emodiary（emotion diary， /ˌimoʊˈdaɪəri/，绪语，in Chinese）是一款AI驱动的情绪日志软件；基于前沿大语言模型与STT技术，该软件可以给予一个用户有反馈、可分析的情绪日志输入端口，并协助用户洞察其较长时间段的情绪状态。
 
+## AI API 配置
+
+当前实现通过阿里云百炼 OpenAI 兼容接口调用：
+
+- 文本情绪分析：`deepseek-v4-flash`
+- 语音转文字：`qwen3-asr-flash`
+
+本地运行前创建 `.env.local`：
+
+```bash
+DASHSCOPE_API_KEY=sk-your-bailian-api-key
+DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+```
+
+`DASHSCOPE_API_KEY` 只在 Next.js 服务端 API route 中读取，不会暴露给浏览器端代码。
+
 ---
 
 用户进入软件后，可以通过语音输入倾斜其遇到的事情或主观的情感表达，然后，软件会调用LLM进行：
