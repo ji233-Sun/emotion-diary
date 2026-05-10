@@ -16,6 +16,31 @@ DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
 
 `DASHSCOPE_API_KEY` 只在 Next.js 服务端 API route 中读取，不会暴露给浏览器端代码。
 
+## Cloudflare Workers 部署
+
+项目使用 OpenNext Cloudflare adapter 部署到 Cloudflare Workers。Cloudflare Workers Builds 可保持：
+
+```bash
+Build command: npm run build
+Deploy command: npx wrangler deploy
+Output directory: .open-next
+```
+
+`wrangler.jsonc` 会在 `wrangler deploy` 前执行 `npm run build:worker` 并生成 `.open-next/worker.js`。
+
+部署环境需要在 Cloudflare 中配置以下变量/Secret：
+
+```bash
+DASHSCOPE_API_KEY=sk-your-bailian-api-key
+DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+```
+
+本地预览 Worker：
+
+```bash
+npm run preview
+```
+
 ---
 
 用户进入软件后，可以通过语音输入倾斜其遇到的事情或主观的情感表达，然后，软件会调用LLM进行：
